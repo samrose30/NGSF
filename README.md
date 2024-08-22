@@ -6,7 +6,7 @@ are the minumum requierments for its use.
 
 ## Fritz version
 
-This version has been altered to sutomatically obtain, fit, and post spectral fits to the Fritz Marshal as part of the ZTF project
+This version has been altered to automatically obtain, fit, and post spectral fits to the Fritz Marshal as part of the ZTF project
 
 ## Files to edit
 
