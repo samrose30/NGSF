@@ -43,13 +43,14 @@ def kill_header(file_name):
     columns = []
 
     for line in lines:
-        ii = re.findall(r'\s|,|[^,\s]+', line)
+        fix = re.sub("\s+", ",", line.strip())
+        ii = fix.split(',')
         columns.append(ii)
 
     columns = np.array(columns)
 
     lam_floats = [float(i) for i in columns[:, 0]]
-    flux_floats = [float(i) for i in columns[:, 2]]
+    flux_floats = [float(i) for i in columns[:, 1]]
 
     spectrum = np.array([lam_floats, flux_floats]).T
 

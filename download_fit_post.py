@@ -2,6 +2,7 @@ import os
 from fritz_func import *
 import sys
 import json
+import pandas as pd
 import NGSF_version
 
 try:
