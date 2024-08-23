@@ -44,8 +44,8 @@ The script
 
 The script `download_fit_post` takes a single argument, which is the spectrum ID on Fritz:
 
-`python download_fit_post.py 27197`
-Will run the code on the SPRAT spectra for ZTF24abbbttv
+`python download_fit_post.py 27168`
+Will run the code on the DBSP spectra obtained on 08/16/24 for ZTF24abbenwl
 
 You must run this script from the NGSF directory
 
@@ -238,7 +238,7 @@ the `ngsf_run` script or to the specified `saving_results_path`)
 ## The output graphs look like this
 
 
-![Output](ZTF18abokyfk_20180925_P60_v1_10_0.png)
+![Output](fit_results_z/ZTF24abbenwl_2024-08-16_DBSP_ngsf0.png)
 
 
 The plot shows the input object in red, the SN and Host Galaxy combined
