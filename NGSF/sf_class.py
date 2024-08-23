@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,14 +23,26 @@ except KeyError:
 with open(configfile) as config_file:
     ngsf_cfg = json.load(config_file)
 
+ngsf_cfg["object_to_fit"] = sys.argv[1]
+z = float(sys.argv[2])
+
+if z != 100:
+    ngsf_cfg["use_exact_z"] = 1
+    ngsf_cfg["z_exact"] = z
+    ngsf_cfg["mask_galaxy_lines"] = 1
+    ngsf_cfg["saving_results_path"] = '/Users/samrose/Research/superfit_for_fritz/NGSF/fit_results_z/'
+
+elif z == 100:
+    ngsf_cfg["use_exact_z"] = 0
+    ngsf_cfg["mask_galaxy_lines"] = 0
+    ngsf_cfg["saving_results_path"] = '/Users/samrose/Research/superfit_for_fritz/NGSF/fit_results/'
+
+
 parameters = Parameters(ngsf_cfg)
 
 
 class Superfit:
-    def __init__(self, spec_file):
-
-        ngsf_cfg["object_to_fit"] = spec_file
-        parameters.object_to_fit = spec_file
+    def __init__(self):
         parameters.calc_lam()
         self.original_path_name = parameters.object_to_fit
         self.name = os.path.basename(self.original_path_name)
@@ -73,10 +86,9 @@ class Superfit:
         if parameters.mask_galaxy_lines == 1 and parameters.mask_telluric == 0:
             object_spec = mask_gal_lines(self.spectrum, parameters.redshift)
         if parameters.mask_galaxy_lines == 0 and parameters.mask_telluric == 1:
-            object_spec = np.loadtxt(self.original_path_name)
-            object_spec = remove_telluric(object_spec)
+            object_spec = remove_telluric(self.spectrum)
         if parameters.mask_galaxy_lines == 0 and parameters.mask_telluric == 0:
-            object_spec = np.loadtxt(self.original_path_name)
+            object_spec = self.spectrum
 
         object_spec[:, 1] = object_spec[:, 1] / np.nanmedian(object_spec[:, 1])
 

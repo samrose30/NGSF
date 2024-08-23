@@ -2,6 +2,7 @@ import numpy as np
 from astropy import table
 from scipy import stats
 from PyAstronomy import pyasl
+import re
 
 
 def kill_header(file_name):
@@ -42,13 +43,13 @@ def kill_header(file_name):
     columns = []
 
     for line in lines:
-        ii = line.split()
+        ii = re.findall(r'\s|,|[^,\s]+', line)
         columns.append(ii)
 
     columns = np.array(columns)
 
     lam_floats = [float(i) for i in columns[:, 0]]
-    flux_floats = [float(i) for i in columns[:, 1]]
+    flux_floats = [float(i) for i in columns[:, 2]]
 
     spectrum = np.array([lam_floats, flux_floats]).T
 
