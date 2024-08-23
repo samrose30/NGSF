@@ -4,9 +4,9 @@ Superfit in python is a software for the spectral classification of Supernovae
 of all major types accompanied by a host galaxy. The following list of versions 
 are the minumum requierments for its use.
 
-## SEDM version
+## Fritz version
 
-This version has been altered to run with the sedmpy pipeline on SEDM spectra.
+This version has been altered to automatically obtain, fit, and post spectral fits to the Fritz Marshal as part of the ZTF project
 
 ## Files to edit
 
