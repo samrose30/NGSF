@@ -11,7 +11,6 @@ This version has been altered to automatically obtain, fit, and post spectral fi
 ## Files to edit
 
 - `config/parameters.json`
-- `scripts/ngsf_run`
 
 Update appropriate paths in these files to point to the template bank and the
 NGSF package top directory.  You can also adjust the parameters for specific
