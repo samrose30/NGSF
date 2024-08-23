@@ -26,6 +26,8 @@ fitting.
 - `Pandas version: 0.23.4`
 - `PyAstronomy version: 0.13.0`
 - `extinction version: 0.4.6`
+- `requests version: 2.32.3`
+- `simplejson version: 3.19.3`
 
 
 # To run one object
@@ -38,12 +40,14 @@ anywhere, but the `"bank_dir"` variable in `config/parameters.json` must indicat
 the  path to the bank.  The user only changes the parameters from the json file
 already within the folder.  An explanation of the parameters is below.
 
-The script `ngsf_run` takes a single argument, which is the spectrum text file:
+The script 
 
-`ngsf_run SN2021urb_2021-08-06_00-00-00_Keck1_LRIS_TNS.flm`
+The script `download_fit_post` takes a single argument, which is the spectrum ID on Fritz:
 
-If you put the script `ngsf_run` in your path, you can run the fitter from any
-directory.
+`python download_fit_post.py 27197`
+Will run the code on the SPRAT spectra for ZTF24abbbttv
+
+You must run this script from the NGSF directory
 
 
 ## The parameters of the fit
