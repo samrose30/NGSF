@@ -3,9 +3,11 @@ import os
 import requests
 import numpy as np
 import base64
+from PIL import Image
 global TOKEN, BASEURL
 GETTOKEN = 'c4b36f88-ebb7-4b74-89f2-519ffb637236'      # Fritz API Key, retrieves from info file
 BASEURL = 'https://fritz.science/'
+
 
 
 def api(method, endpoint, data=None, params=None, timeout=10):
@@ -98,6 +100,28 @@ def get_spectrum_api(spectrum_id):
     url = BASEURL+'api/spectrum/'+str(spectrum_id)
     response = api('GET',url)
     return response
+
+def combine_images(columns, space, images, savepath):
+    rows = len(images) // columns
+    if len(images) % columns:
+        rows += 1
+    width_max = max([Image.open(image).width for image in images])
+    height_max = max([Image.open(image).height for image in images])
+    background_width = width_max*columns + (space*columns)-space
+    background_height = height_max*rows + (space*rows)-space
+    background = Image.new('RGBA', (background_width, background_height), (255, 255, 255, 255))
+    x = 0
+    y = 0
+    for i, image in enumerate(images):
+        img = Image.open(image)
+        x_offset = int((width_max-img.width)/2)
+        y_offset = int((height_max-img.height)/2)
+        background.paste(img, (x+x_offset, y+y_offset))
+        x += width_max + space
+        if (i+1) % columns == 0:
+            y += height_max + space
+            x = 0
+    background.save(savepath)
 
 
 def write_ascii_file_from_specid(specid, path):
