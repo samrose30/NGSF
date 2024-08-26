@@ -12,9 +12,18 @@ except KeyError:
 with open(configfile) as config_file:
     ngsf_cfg = json.load(config_file)
 
-to_fit_dir = ngsf_cfg['spectra_dir']
+to_fit_dir = ngsf_cfg['pkg_dir'] + 'spectra_to_fit/'
 z_fit_dir = ngsf_cfg['pkg_dir'] + 'fit_results_z/'
 fit_dir = ngsf_cfg['pkg_dir'] + 'fit_results/'
+
+if os.path.exists(to_fit_dir) == False: # if folder doesn't exist
+    os.system('mkdir ' + to_fit_dir) # creates the folder
+
+if os.path.exists(z_fit_dir) == False: # if folder doesn't exist
+    os.system('mkdir ' + z_fit_dir) # creates the folder
+
+if os.path.exists(fit_dir) == False: # if folder doesn't exist
+    os.system('mkdir ' + fit_dir) # creates the folder
 
 specid = sys.argv[1]
 
@@ -44,16 +53,20 @@ elif float(z) == 100:
     z = fit_z
 
 
+    
+
+images = []
+prefix = spec_filename.split('.')[0]
 for i in range(0, 3):
-    prefix = spec_filename.split('.')[0]
     fit_png_name = prefix + '_ngsf' + str(i) + '.png'
     fit_png_file = fit_dir + fit_png_name
-    text = 'Top ' + str(i+1) + '/3 matches from superfit with redshift a free parameter'
-    response = post_comment(ztfname, text, fit_png_file, fit_png_name)
+    fit_png_file_z = z_fit_dir + fit_png_name
+    images.append(fit_png_file)
+    images.append(fit_png_file_z)
 
-for i in range(0, 3):
-    prefix = spec_filename.split('.')[0]
-    fit_png_name = prefix + '_ngsf' + str(i) + '.png'
-    fit_png_file = z_fit_dir + fit_png_name
-    text = 'Top ' + str(i+1) + '/3 matches from superfit with redshift set z=' + str(z)
-    response = post_comment(ztfname, text, fit_png_file, fit_png_name) 
+comb_fit_png_name = prefix + '_ngsf.png'
+comb_fit_png_file = fit_dir + comb_fit_png_name
+combine_images(columns=2, space=0, images=images, savepath=comb_fit_png_file)
+    
+text = 'Top 3 matches from superfit with redshift a free parameter (column 1) and with redshift fixed (column 2)'
+response = post_comment(ztfname, text, comb_fit_png_file, comb_fit_png_name)
