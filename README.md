@@ -57,41 +57,38 @@ file, the file looks like this (the template for this example is included in
 the git repository).
 
 
-    "object_to_fit": "SN2021urb_2021-08-06_00-00-00_Keck1_LRIS_TNS.flm",
+    "object_to_fit" : "SN2021urb_2021-08-06_00-00-00_Keck1_LRIS_TNS.flm",
 
-    "use_exact_z": 1,
+    "use_exact_z": 0,
     "z_exact": 0.127,
 
-
     "z_range_begin": 0,
-    "z_range_end": 0.13,
-    "z_int": 0.01,
-
-
+    "z_range_end": 0.15,
+    "z_int": 0.001,
+    
     "resolution":10,
 
-    "temp_sn_tr"  : ["IIb-flash", "computed", "Ia 02es-like", "Ia-02cx like", "TDE He", "Ca-Ia",
-                    "Ia-CSM-(ambigious)", "II", "super_chandra", "SLSN-II", "IIn", "FBOT", "Ibn",
-                    "SLSN-IIn", "Ia 91T-like", "IIb", "TDE H", "SN - Imposter", "II-flash", "ILRT",
-                    "Ia 99aa-like", "Ic", "SLSN-I", "Ia-pec", "Ib", "Ia-CSM", "Ia-norm", "SLSN-Ib",
+    "temp_sn_tr"  : ["IIb-flash", "computed", "Ia 02es-like", "Ia-02cx like", "TDE He", "Ca-Ia", 
+                    "Ia-CSM-(ambigious)", "II", "super_chandra", "SLSN-II", "IIn", "FBOT", "Ibn", 
+                    "SLSN-IIn", "Ia 91T-like", "IIb", "TDE H", "SN - Imposter", "II-flash", "ILRT", 
+                    "Ia 99aa-like", "Ic", "SLSN-I", "Ia-pec", "Ib", "Ia-CSM", "Ia-norm", "SLSN-Ib", 
                     "TDE H+He", "Ia 91bg-like", "Ca-Ib", "Ia-rapid", "Ic-BL", "Ic-pec", "SLSN-IIb"],
 
     "temp_gal_tr" : ["E","S0","Sa","Sb","SB1","SB2","SB3","SB4","SB5","SB6","Sc"],
+   
+    "lower_lam": 4000,
+    "upper_lam": 9500,
 
-    "lower_lam": 0,
-    "upper_lam": 0,
-
-    "error_spectrum": "sg",
-    "saving_results_path": "",
-
-    "show_plot": 1,
-    "how_many_plots": 1,
+    "error_spectrum" : "sg",
+    
+    "show_plot" : 0,
+    "how_many_plots" : 3,
     "show_plot_png": 1,
 
     "verbose": 0,
 
-    "mask_galaxy_lines": 1,
-    "mask_telluric": 0,
+    "mask_galaxy_lines":0,
+    "mask_telluric":1,
 
     "minimum_overlap": 0.7,
 
@@ -100,10 +97,11 @@ the git repository).
 
     "Alam_high": 2,
     "Alam_low": -2,
-    "Alam_interval": 0.2,
+    "Alam_interval":0.2,
 
-    "pkg_dir": "/home/user/NGSF",
-    "bank_dir": "/home/user/NGSF/bank"
+    "pkg_dir": "/Users/samrose/Research/superfit_for_fritz/NGSF/",
+    "spectra_dir":"/Users/samrose/Research/superfit_for_fritz/NGSF/spectra_to_fit/",
+    "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/"
 
 
 
@@ -152,6 +150,8 @@ the git repository).
 `"Alam_interval"`: size of interval
 
 `"pkg_dir"`: Full path to the top level of the software package
+
+`"spectra_dir"`: Full path to the directory where spectra will be downloaded to
 
 `"bank_dir"`: Full path to the template bank
 
