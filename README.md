@@ -40,14 +40,15 @@ anywhere, but the `"bank_dir"` variable in `config/parameters.json` must indicat
 the  path to the bank.  The user only changes the parameters from the json file
 already within the folder.  An explanation of the parameters is below.
 
-The script 
 
 The script `download_fit_post` takes a single argument, which is the spectrum ID on Fritz:
 
 `python download_fit_post.py 27168`
 Will run the code on the DBSP spectra obtained on 08/16/24 for ZTF24abbenwl
 
-You must run this script from the NGSF directory
+If you are very confident about the redshift on Fritz you can instead run `fixed_z_download_fit_post` which will not run over redshift and use only the value from Fritz
+
+You must run these scripts from the NGSF directory
 
 
 ## The parameters of the fit
