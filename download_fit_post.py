@@ -73,3 +73,4 @@ combine_images(columns=3, space=10, images=images, savepath=comb_fit_png_file)
     
 text = 'Top 3 matches from superfit with redshift a free parameter (row 1) and with redshift fixed (row 2)'
 response = post_comment(ztfname, text, comb_fit_png_file, comb_fit_png_name)
+print(response)

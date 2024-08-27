@@ -1,5 +1,5 @@
 {   
-    "object_to_fit" : "SN2021urb_2021-08-06_00-00-00_Keck1_LRIS_TNS.flm",
+    "object_to_fit" : "place_hold",
 
     "use_exact_z": 0,
     "z_exact": 0.127,
@@ -17,12 +17,12 @@
                     "TDE H+He", "Ia 91bg-like", "Ca-Ib", "Ia-rapid", "Ic-BL", "Ic-pec", "SLSN-IIb"],
 
     "temp_gal_tr" : ["E","S0","Sa","Sb","SB1","SB2","SB3","SB4","SB5","SB6","Sc"],
+    "saving_results_path" : "placehold/",
    
     "lower_lam": 4000,
     "upper_lam": 9500,
 
     "error_spectrum" : "sg",
-    "saving_results_path" : "/Users/samrose/Research/superfit_for_fritz/NGSF/fit_results",
     
     "show_plot" : 0,
     "how_many_plots" : 3,
@@ -43,6 +43,5 @@
     "Alam_interval":0.2,
 
     "pkg_dir": "/Users/samrose/Research/superfit_for_fritz/NGSF/",
-    "spectra_dir":"/Users/samrose/Research/superfit_for_fritz/NGSF/spectra_to_fit/",
     "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/"
 }
