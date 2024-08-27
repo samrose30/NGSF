@@ -32,35 +32,17 @@ spec_filename, specid, ztfname = write_ascii_file_from_specid(specid, to_fit_dir
 z = get_redshift(ztfname)
 
 if z == None:
-    z = 100
+    print('this object has no redshift on ztf, run download_fit_post.py instead')
+    sys.exit()
 
-cmd_no_z = 'python run.py ' + str(to_fit_dir) + str(spec_filename) + ' ' + '100'
-
-os.system(cmd_no_z)
 
 if float(z) != 100:
     cmd_z = 'python run.py ' + str(to_fit_dir) + str(spec_filename) + ' ' + str(z)
     os.system(cmd_z)
-
-elif float(z) == 100:
-    spec = str(spec_filename)
-    name = spec.split('.')[0]
-    fitted_csv = fit_dir + name + '.csv'
-    df = pd.read_csv(fitted_csv)
-    fit_z = df['Z'][0]
-    cmd_z = 'python run.py ' + str(to_fit_dir) + str(spec_filename) + ' ' + str(fit_z)
-    os.system(cmd_z)
-    z = fit_z
-
-
     
 
 images = []
 prefix = spec_filename.split('.')[0]
-for i in range(0, 3):
-    fit_png_name = prefix + '_ngsf' + str(i) + '.png'
-    fit_png_file = fit_dir + fit_png_name
-    images.append(fit_png_file)
 
 for i in range(0, 3):
     fit_png_name = prefix + '_ngsf' + str(i) + '.png'
@@ -69,8 +51,8 @@ for i in range(0, 3):
 
 comb_fit_png_name = prefix + '_ngsf.png'
 comb_fit_png_file = fit_dir + comb_fit_png_name
-combine_images(columns=3, space=10, images=images, savepath=comb_fit_png_file)
+combine_images(columns=2, space=10, images=images, savepath=comb_fit_png_file)
     
-text = 'Top 3 matches from superfit with redshift a free parameter (row 1) and with redshift fixed (row 2) for ' + prefix
+text = 'Top 3 matches from superfit with redshift fixed to the Fritz value z = ' + str(z) + ' for ' + prefix
 response = post_comment(ztfname, text, comb_fit_png_file, comb_fit_png_name)
 print(response)
