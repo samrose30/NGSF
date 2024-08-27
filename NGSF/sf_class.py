@@ -30,12 +30,12 @@ if z != 100:
     ngsf_cfg["use_exact_z"] = 1
     ngsf_cfg["z_exact"] = z
     ngsf_cfg["mask_galaxy_lines"] = 1
-    ngsf_cfg["saving_results_path"] = '/Users/samrose/Research/superfit_for_fritz/NGSF/fit_results_z/'
+    ngsf_cfg["saving_results_path"] = ngsf_cfg['pkg_dir'] + 'fit_results_z/'
 
 elif z == 100:
     ngsf_cfg["use_exact_z"] = 0
     ngsf_cfg["mask_galaxy_lines"] = 0
-    ngsf_cfg["saving_results_path"] = '/Users/samrose/Research/superfit_for_fritz/NGSF/fit_results/'
+    ngsf_cfg["saving_results_path"] = ngsf_cfg['pkg_dir'] + 'fit_results/'
 
 
 parameters = Parameters(ngsf_cfg)
