@@ -155,16 +155,6 @@ the git repository).
 `"bank_dir"`: Full path to the template bank
 
 
-## To Run
-
-Once the parameters have been updated in the `parameters.json` file the user
-simply needs to run the script `ngsf_run` with the spectrum to fit as the
-only parameter.
-
-The file of the object to be analyzed no longer needs to be within the superfit
-folder.
-
-
 # Further details about the code
 
 
