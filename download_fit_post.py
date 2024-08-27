@@ -60,13 +60,16 @@ prefix = spec_filename.split('.')[0]
 for i in range(0, 3):
     fit_png_name = prefix + '_ngsf' + str(i) + '.png'
     fit_png_file = fit_dir + fit_png_name
-    fit_png_file_z = z_fit_dir + fit_png_name
     images.append(fit_png_file)
+
+for i in range(0, 3):
+    fit_png_name = prefix + '_ngsf' + str(i) + '.png'
+    fit_png_file_z = z_fit_dir + fit_png_name
     images.append(fit_png_file_z)
 
 comb_fit_png_name = prefix + '_ngsf.png'
 comb_fit_png_file = fit_dir + comb_fit_png_name
-combine_images(columns=2, space=0, images=images, savepath=comb_fit_png_file)
+combine_images(columns=3, space=10, images=images, savepath=comb_fit_png_file)
     
-text = 'Top 3 matches from superfit with redshift a free parameter (column 1) and with redshift fixed (column 2)'
+text = 'Top 3 matches from superfit with redshift a free parameter (row 1) and with redshift fixed (row 2)'
 response = post_comment(ztfname, text, comb_fit_png_file, comb_fit_png_name)
