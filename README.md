@@ -58,7 +58,7 @@ file, the file looks like this (the template for this example is included in
 the git repository).
 
 
-    "object_to_fit" : "SN2021urb_2021-08-06_00-00-00_Keck1_LRIS_TNS.flm",
+    "object_to_fit" : "place_hold",
 
     "use_exact_z": 0,
     "z_exact": 0.127,
@@ -76,6 +76,7 @@ the git repository).
                     "TDE H+He", "Ia 91bg-like", "Ca-Ib", "Ia-rapid", "Ic-BL", "Ic-pec", "SLSN-IIb"],
 
     "temp_gal_tr" : ["E","S0","Sa","Sb","SB1","SB2","SB3","SB4","SB5","SB6","Sc"],
+    "saving_results_path" : "placehold/",
    
     "lower_lam": 4000,
     "upper_lam": 9500,
@@ -101,12 +102,11 @@ the git repository).
     "Alam_interval":0.2,
 
     "pkg_dir": "/Users/samrose/Research/superfit_for_fritz/NGSF/",
-    "spectra_dir":"/Users/samrose/Research/superfit_for_fritz/NGSF/spectra_to_fit/",
     "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/"
 
 
 
-`"object_to_fit"` : the object to analyze, default only.  Can be specified on the command line also.
+`"object_to_fit"` : the object to analyze, default only.  This is written when the wrapper script is run.
 
 `"use_exact_z"`: can be 1 (yes) or 0 (no). Determines weather the redshift will be an exact number or an array.
 
@@ -124,7 +124,7 @@ the git repository).
 
 `"error_spectrum"` : refers to the type of routine used to perform the calculation of the error spectrum. The recommended one is `sg` Savitzky-Golay, there is also the option of `linear` estimation and the option `included` in which the user can use the error spectrum that comes with an object if he wants to, however, this is not recommended.
 
-`"saving_results_path"`: path in which to save the performed fits, the default one is the superfit folder.
+`"saving_results_path"`: path in which to save the performed fits.
 
 `"show_plot"` : to show the plotted fit or no, the default being 1, to show.
 
@@ -151,8 +151,6 @@ the git repository).
 `"Alam_interval"`: size of interval
 
 `"pkg_dir"`: Full path to the top level of the software package
-
-`"spectra_dir"`: Full path to the directory where spectra will be downloaded to
 
 `"bank_dir"`: Full path to the template bank
 
