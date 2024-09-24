@@ -5,7 +5,7 @@ import numpy as np
 import base64
 from PIL import Image
 global TOKEN, BASEURL
-GETTOKEN = 'c4b36f88-ebb7-4b74-89f2-519ffb637236'      # Fritz API Key, retrieves from info file
+GETTOKEN =      # Fritz API Key, retrieves from info file
 BASEURL = 'https://fritz.science/'
 
 
