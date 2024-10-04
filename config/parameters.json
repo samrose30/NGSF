@@ -43,5 +43,6 @@
     "Alam_interval":0.2,
 
     "pkg_dir": "/Users/samrose/Research/superfit_for_fritz/NGSF/",
-    "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/"
+    "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/",
+    "fritz_token": "your_fritz_token"
 }
