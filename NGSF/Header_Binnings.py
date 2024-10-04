@@ -49,8 +49,10 @@ def kill_header(file_name):
 
     columns = np.array(columns)
 
-    lam_floats = [float(i) for i in columns[:, 0]]
-    flux_floats = [float(i) for i in columns[:, 1]]
+    good_idx = np.where(columns[:, 1] != 'None')
+
+    lam_floats = [float(i) for i in columns[:, 0][good_idx]]
+    flux_floats = [float(i) for i in columns[:, 1][good_idx]]
 
     spectrum = np.array([lam_floats, flux_floats]).T
 
