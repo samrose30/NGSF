@@ -47,12 +47,15 @@ prefix = spec_filename.split('.')[0]
 for i in range(0, 3):
     fit_png_name = prefix + '_ngsf' + str(i) + '.png'
     fit_png_file_z = z_fit_dir + fit_png_name
-    images.append(fit_png_file_z)
+    if os.path.exists(fit_png_file_z):
+        images.append(fit_png_file_z)
+    else:
+        images.append('blank.png')
 
 comb_fit_png_name = prefix + '_ngsf.png'
 comb_fit_png_file = fit_dir + comb_fit_png_name
 combine_images(columns=2, space=10, images=images, savepath=comb_fit_png_file)
     
-text = 'Top 3 matches from superfit with redshift fixed to the Fritz value z = ' + str(z) + ' for ' + prefix
+text = 'Top 3 matches from superfit with redshift fixed to the Fritz value z = ' + str(z) + ' for ' + prefix + ' fritz specid ' + specid
 response = post_comment(ztfname, text, comb_fit_png_file, comb_fit_png_name)
 print(response)
