@@ -13,7 +13,7 @@ This version has been altered to automatically obtain, fit, and post spectral fi
 - `config/parameters.json`
 
 Update appropriate paths in these files to point to the template bank and the
-NGSF package top directory.  You can also adjust the parameters for specific
+NGSF package top directory.  You will also need to put in a token generated from your account profile on Fritz. You can also adjust the parameters for specific
 fitting.
 
 ## Requierments
@@ -102,7 +102,8 @@ the git repository).
     "Alam_interval":0.2,
 
     "pkg_dir": "/Users/samrose/Research/superfit_for_fritz/NGSF/",
-    "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/"
+    "bank_dir": "/Users/samrose/Research/superfit_for_fritz/bank/",
+    "fritz_token": "your_fritz_token"
 
 
 
@@ -153,6 +154,8 @@ the git repository).
 `"pkg_dir"`: Full path to the top level of the software package
 
 `"bank_dir"`: Full path to the template bank
+
+`"fritz_token"`: Your Fritz token. Can be generated from your profile page on Fritz. 
 
 
 # Further details about the code
