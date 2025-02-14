@@ -48,7 +48,7 @@ Will run the code on the DBSP spectrum obtained on 08/16/24 for ZTF24abbenwl
 
 You can view the additional options for the script by running `python download_fit_post.py -h`
 
-`positional arguments:
+positional arguments:
   specid                specid of spectrum of interest on Fritz
 
 options:
@@ -67,7 +67,7 @@ options:
   
                         Specify min and max wavelengths to use for fitting in angstroms
 
-The --fritz_z flag trumps a specified redshift using the -z flag and --ngps trumps --wav_range`
+The --fritz_z flag trumps a specified redshift using the -z flag and --ngps trumps --wav_range
 
 
 You must run this script from the NGSF directory
