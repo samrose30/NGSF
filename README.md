@@ -41,14 +41,29 @@ the  path to the bank.  The user only changes the parameters from the json file
 already within the folder.  An explanation of the parameters is below.
 
 
-The script `download_fit_post` takes a single argument, which is the spectrum ID on Fritz:
+The script `download_fit_post` requires a single argument, which is the spectrum ID on Fritz:
 
 `python download_fit_post.py 27168`
-Will run the code on the DBSP spectra obtained on 08/16/24 for ZTF24abbenwl
+Will run the code on the DBSP spectrum obtained on 08/16/24 for ZTF24abbenwl
 
-If you are very confident about the redshift on Fritz you can instead run `fixed_z_download_fit_post` which will not run over redshift and use only the value from Fritz
+You can view the additional options for the script by running `python download_fit_post.py -h`
 
-You must run these scripts from the NGSF directory
+positional arguments:
+  specid                specid of spectrum of interest on Fritz
+
+options:
+  -h, --help            show this help message and exit
+  --fritz_z             Use this option to fetch the value of the redshift on Fritz and use that for fitting.
+  -z REDSHIFT, --redshift REDSHIFT
+                        Use this option to fix the redshift
+  -n, --ngps            Use this option to modify wavelength range for fitting based on NGPS R and I channels
+  --wav_range MIN_WAV MAX_WAV
+                        Specify min and max wavelengths to use for fitting in angstroms
+
+The --fritz_z flag trumps a specified redshift using the -z flag and --ngps trumps --wav_range
+
+
+You must run this script from the NGSF directory
 
 
 ## The parameters of the fit
