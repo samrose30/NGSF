@@ -10,6 +10,7 @@ def kill_header(file_name):
     """
     This function removes all entries beginning with '#' from a file with a
     header, keeping only the column data and saving it into a file.
+    It also removes all rows with a nan value for flux.
 
     parameters
     ----------
@@ -55,6 +56,7 @@ def kill_header(file_name):
     flux_floats = [float(i) for i in columns[:, 1][good_idx]]
 
     spectrum = np.array([lam_floats, flux_floats]).T
+    spectrum = spectrum[~np.isnan(spectrum[:,1]), :]
 
     return spectrum
 

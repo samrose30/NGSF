@@ -162,6 +162,50 @@ def write_ascii_file_from_specid(specid, path):
 
         #print (s,'\n')
         spectrum_name = s
+        
+        
+    elif inst == 'NGPS':
+        
+        wav = (a['data']['wavelengths'])
+        flux = (a['data']['fluxes'])
+        err = (a['data']['errors'])
+
+        OBSDATE = a['data']['observed_at'].split('T')[0]
+
+        # get rid of NaNs
+        idx_nans = np.where(~np.isfinite(np.array(flux, dtype=float)))[0]
+        idx_nans = np.flip(idx_nans) #have to move from end to beginning to avoid messing up index
+        for i in idx_nans:
+            del flux[i]
+            del wav[i]
+            try:
+                del err[i]
+            except:
+                continue
+
+        s = (ztfname+'_'+str(OBSDATE)+'_'+str(inst)+'.ascii')
+
+        if err == None:
+
+            with open(path + s,'w') as f:
+
+                for i in range(len(wav)):
+                    f.write(str(wav[i])+'\t'+str(flux[i])+'\n')
+            f.close()
+
+            #print (s,'\n')
+            spectrum_name = s
+
+        else:
+
+            with open(path + s,'w') as f:
+
+                for i in range(len(wav)):
+                    f.write(str(wav[i])+'\t'+str(flux[i])+'\t'+str(err[i])+'\n')
+            f.close()
+
+            #print (s,'\n')
+            spectrum_name = s
 
 
     elif inst == 'SPRAT':
