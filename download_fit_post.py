@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser(
                     prog='download_fit_post',
                     description='Downloads an ascii spectrum file for the provided specid from Fritz,'
                     'runs NGSF and uploads a comment to the source page with the results of the fit',
-                    epilog='The --fritz_z flag trumps a specified redshift using the -z flag and --ngps trumps --wav_range')
+                    epilog='The --fritz_z flag trumps a specified redshift using the -z flag and --INSTRUMENT trumps --wav_range')
 
 parser.add_argument('specid', help='specid of spectrum of interest on Fritz')  
 parser.add_argument('--fritz_z', help='Use this option to fetch the value of the redshift on Fritz and use that for fitting.',
