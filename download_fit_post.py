@@ -18,6 +18,8 @@ parser.add_argument('--fritz_z', help='Use this option to fetch the value of the
 parser.add_argument('-z', '--redshift', help='Use this option to fix the redshift')
 parser.add_argument('-n', '--ngps',
                     action='store_true', help='Use this option to modify wavelength range for fitting based on NGPS R and I channels')
+parser.add_argument('--ghts',
+                    action='store_true', help='Use this option to modify wavelength range for fitting based on the SOAR GHTS bandpass')
 parser.add_argument('--wav_range', nargs=2, help='Specify min and max wavelengths to use for fitting in angstroms',
                     metavar=('MIN_WAV', 'MAX_WAV'))
 
@@ -43,6 +45,10 @@ elif args.wav_range != None:
 if args.ngps:
     wav_min = '5900' #in angstroms
     wav_max = '10000' #in angstroms
+
+if args.ghts:
+    wav_min = '4000' #in angstroms
+    wav_max = '7000' #in angstroms
 
 if wav_min == None:
     wav_min = '4000'

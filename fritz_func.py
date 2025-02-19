@@ -162,6 +162,21 @@ def write_ascii_file_from_specid(specid, path):
 
         #print (s,'\n')
         spectrum_name = s
+
+
+    elif inst == 'GHTS':
+        
+        header = (a['data']['altdata'])
+
+
+        s = (ztfname+'_'+str(a['data']['observed_at']).split('T')[0]+'_'+str(inst)+'.ascii')
+
+        with open(path + s,'w') as f:
+            f.write(a['data']['original_file_string'])
+        f.close()
+
+        #print (s,'\n')
+        spectrum_name = s
         
         
     elif inst == 'NGPS':
