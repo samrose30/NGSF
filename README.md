@@ -60,10 +60,12 @@ options:
   -z REDSHIFT, --redshift REDSHIFT       Use this option to fix the redshift
                         
   -n, --ngps            Use this option to modify wavelength range for fitting based on NGPS R and I channels
+
+  --ghts               Use this option to modify wavelength range for fitting based on the SOAR GHTS bandpass
   
   --wav_range MIN_WAV MAX_WAV       Specify min and max wavelengths to use for fitting in angstroms
 
-The --fritz_z flag trumps a specified redshift using the -z flag and --ngps trumps --wav_range
+The --fritz_z flag trumps a specified redshift using the -z flag and --INSTRUMENT trumps --wav_range
 
 
 You must run this script from the NGSF directory
