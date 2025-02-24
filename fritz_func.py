@@ -166,10 +166,10 @@ def write_ascii_file_from_specid(specid, path):
 
     elif inst == 'GHTS':
         
-        header = (a['data']['altdata'])
+        OBSDATE = a['data']['observed_at'].split('T')[0]
 
 
-        s = (ztfname+'_'+str(a['data']['observed_at']).split('T')[0]+'_'+str(inst)+'.ascii')
+        s = (ztfname+'_'+str(OBSDATE).split('T')[0]+'_'+str(inst)+'.ascii')
 
         with open(path + s,'w') as f:
             f.write(a['data']['original_file_string'])
@@ -180,12 +180,12 @@ def write_ascii_file_from_specid(specid, path):
         
         
     elif inst == 'NGPS':
+
+        OBSDATE = a['data']['observed_at'].split('T')[0]
         
         wav = (a['data']['wavelengths'])
         flux = (a['data']['fluxes'])
         err = (a['data']['errors'])
-
-        OBSDATE = a['data']['observed_at'].split('T')[0]
 
         # get rid of NaNs
         idx_nans = np.where(~np.isfinite(np.array(flux, dtype=float)))[0]
